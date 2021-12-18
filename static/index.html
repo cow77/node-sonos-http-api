@@ -113,6 +113,44 @@
         </ul>
       </div>
 
+<br><br>
+<h2>Implementation via this fork</h2>
+<b>addtoqueue</b><br>
+Add track to the current queue of specified player. You can obtain track uri from /favorites/detailed call. When using Sonos music library (CIFS) and know the path of a song you can construct the uri by using encodeURIComponent. The request will accept:
+<br>
+<ul><li>uri (required,</li>
+<li>enqueueAsNext (boolean, required)</li>
+<li>desiredFirstTrackNumberEnqueued (optional)</li>
+</ul>
+Examples:
+<br>
+&bull; http://localhost:5005/myroom/addtoqueue/x-file-cifs%3A%2F%2F10.10.1.77%2Fpublic%2FJames%2F02.%20From%20Russia%20With%20Love%2F07%20-%20007.mp3/true/1<br>
+&bull; http://localhost:5005/myroomroom/addtoqueue/x-sonos-spotify:spotify%3atrack%3a4BggEwLhGfrbrl7JBhC8EC?sid=9&flags=8224&sn=2/true/1<br>
+
+<br>   
+<b>loudness</b><br>
+Can only be invoked per player, not on a grouped or zone. You can call the players individually even if they are in a group or zone.<br>
+
+&bull; https://github.com/jishi/node-sonos-http-api/pull/588/files<br>
+&bull; https://sonos.barrydegraaff.tk/zolder/loudness/on<br>
+&bull; https://sonos.barrydegraaff.tk/zolder/loudness/off<br>
+<br>
+<b>balance</b> <br>
+Can only be invoked per player, not on a grouped or zone. You can call the players individually even if they are in a group or zone.<br>You can use balance to create a stereo pair of speakers of a different type by setting balance and then group them.<br>
+&bull; https://github.com/jishi/node-sonos-http-api/pull/509/files<br>
+&bull; https://github.com/jishi/node-sonos-discovery/pull/109/files<br>
+&bull; http://localhost:5005/{room name}/balance/{integer between -100 and 100}<br>
+&bull; https://sonos.barrydegraaff.tk/zolder/balance/0 balance to the left<br>
+&bull; https://sonos.barrydegraaff.tk/zolder/balance/50 balance to normal<br>
+&bull; https://sonos.barrydegraaff.tk/zolder/balance/100 balance to right<br>
+
+<b>led</b><br>
+Can only be invoked per player, not on a grouped or zone. You can call the players individually even if they are in a group or zone.<br>
+&bull; https://sonos.barrydegraaff.tk/Woonkamer/led/on<br>
+&bull; https://sonos.barrydegraaff.tk/Woonkamer/led/off<br>
+&bull; https://github.com/jishi/node-sonos-discovery/pull/89<br>
+
+
       <div class="footer">
         <p><a href="/docs">Full documentation</a></p>
         <p>Learn more at <a href="https://github.com/jishi/node-sonos-http-api">https://github.com/jishi/node-sonos-http-api</a></p>
